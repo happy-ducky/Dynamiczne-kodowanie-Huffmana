@@ -84,15 +84,15 @@ addChar = function(char) {
     }
 }
 
-checkIfParentHasChildren = function(node) {
-    if (node.leftLeaf === null || node.leftLeaf === undefined) {
-        return false;
-    }
-    if (node.rightLeaf === null || node.rightLeaf === undefined) {
-        return false;
-    }
-    return true;
-}
+//checkIfParentHasChildren = function(node) {
+//    if (node.leftLeaf === null || node.leftLeaf === undefined) {
+//        return false;
+//    }
+//    if (node.rightLeaf === null || node.rightLeaf === undefined) {
+//        return false;
+//    }
+//    return true;
+//}
 
 //always starts with NYT (nodeList[0])
 checkValuesOfNeighbors = function(node) {
@@ -188,6 +188,11 @@ showTree = function(node) {
     return finalTree;
 }
 
+//from https://stackoverflow.com/questions/1026069/how-to-reverse-a-string-in-javascript
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+
 findCharTreeCode = function(char) {
     let code="";
     for (let j = 0; j < nodeList.length; j++) {
@@ -205,12 +210,12 @@ findCharTreeCode = function(char) {
                 currentNode = currentNode.parent;
             }
             console.log("Code for character '" + char + "': " + code);
-            return code;
+            return reverseString(code); // reverse the code to get the correct order
         }
-        console.log("do I double?");
+        //console.log("do I double?");
     }
     console.log("Code for character '" + char + "': " + code);
-    return code;
+    return reverseString(code); // reverse the code to get the correct order
 }
 
 //from https://www.geeksforgeeks.org/javascript/javascript-program-to-convert-decimal-to-binary/
@@ -278,7 +283,7 @@ processInput = function(inputString) {
             console.log("Processing character: " + char);
             let temp = encoding(char)
             console.log("Current code: " + temp);
-            fullEncoding = fullEncoding + temp;
+            fullEncoding = fullEncoding + "," + temp;
             addChar(char);
             checkValuesOfNeighbors(nodeList[0]);
             loopShowTree(fullEncoding);//so that the tree can be seen in html
@@ -294,3 +299,5 @@ document.getElementById("buttonSubmit").onclick = function() {
     console.log("Final tree structure:");
     showTree(nodeList[0]);
 }
+
+//aardvark from https://youtu.be/c2wu8QOS1EY?si=ZUF1fQsuuxIEnqX_
