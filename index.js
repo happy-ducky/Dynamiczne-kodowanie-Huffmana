@@ -84,16 +84,6 @@ addChar = function(char) {
     }
 }
 
-//checkIfParentHasChildren = function(node) {
-//    if (node.leftLeaf === null || node.leftLeaf === undefined) {
-//        return false;
-//    }
-//    if (node.rightLeaf === null || node.rightLeaf === undefined) {
-//        return false;
-//    }
-//    return true;
-//}
-
 //always starts with NYT (nodeList[0])
 checkValuesOfNeighbors = function(node) {
     while (node.parent !==null){
@@ -271,8 +261,6 @@ loopShowTree = function(fullEncoding) {
 }
 
 processInput = function(inputString) {
-    let guard = 1;
-    let oldGuard = 0;
     checkedChars = [];
     nodeList = [];
     addFirstNode();
